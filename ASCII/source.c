@@ -25,7 +25,10 @@ int main()
 		while (columnWidth != -1)
 		{
 			printf("Enter Column Width: ");
-			scanf("%d", &columnWidth);
+			if (scanf("%d", &columnWidth) != 1)
+			{
+				// ERROR NEEDS TO BE CAUGHT HERE...
+			}
 			if (columnWidth == -1) break;			
 			else if (columnWidth >= MIN_COLUMNS && columnWidth <= MAX_COLUMNS) break;
 			else if (columnWidth < MIN_COLUMNS || columnWidth > MAX_COLUMNS)
@@ -36,12 +39,18 @@ int main()
 		if (columnWidth == -1) break;
 
 		// ** Get start and end values from user **			
-		printf("Enter Start Index: ");
-		scanf("%d", &startIndex);
+		printf("Enter Start Index: ");		
+		if (scanf("%d", &startIndex) != 1)
+		{
+			// ERROR NEEDS TO BE CAUGHT HERE...
+		}
 		if (startIndex == -1) break;
 
-		printf("Enter End Index: ");
-		scanf("%d", &endIndex);
+		printf("Enter End Index: ");		
+		if (scanf("%d", &endIndex) != 1)
+		{
+			// ERROR NEEDS TO BE CAUGHT HERE...
+		}
 		if (endIndex == -1) break;
 
 		// ** Print ASCII details for range using user provided details **	
@@ -49,7 +58,15 @@ int main()
 		int i = 1;
 		for (int a = startIndex; a <= endIndex; a++)
 		{
-			printf("%03d %08d %c\t\t", a, IntToBinary(a), a);
+			//printf("%03d %08d %c\t\t", a, IntToBinary(a), a);
+			if (a == 10)
+			{
+				printf("%03d %08d #\t\t", a, IntToBinary(a));
+			}
+			else
+			{
+				printf("%03d %08d %c\t\t", a, IntToBinary(a), a);
+			}			
 			if (i % columnWidth == 0) printf("\n");
 			i++;
 		}
