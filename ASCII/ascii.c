@@ -1,21 +1,36 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
+#include <stdlib.h>
 
+#define VERSION "1.0"
+#define CREATED_BY "Antony Lodge"
 #define MAX_COLUMNS 5
 #define MIN_COLUMNS 1
 
 
 // ** PROTOTYPES **
 int IntToBinary(int k);
+void ShowVersion();
+
 
 
 // ** MAIN **
 int main()
 {
+	// ** Show application details **
+	ShowVersion();
 
+
+	// ** Start application **
 	while (1)
 	{
+		// ** Clear screen **		
+		//system("@cls||clear");
+
+		
+
+
 		// ** Get start and end values from user **	
 		int startIndex = 0;		// = 48;
 		int endIndex = 0;		// = 58;
@@ -73,12 +88,26 @@ int main()
 
 		// ** Add padding **
 		printf("\n\n\n");
+
+
+		// ** Check if another run is required **
+		//char response;
+		//printf("Run again...?");
+		//if (scanf("%c", &response) != 1)
+		//{
+		//	// ERROR NEEDS TO BE CAUGHT HERE...
+		//}
+		//if (response != 'y' && response != 'Y')
+		//{
+		//	break;
+		//}
+
 	}
 	
 	
 	// ** Finish Up **
-	printf("\n\n\n");
-	printf("Function completed...Press any key to continue\n");
+	//printf("\n\n\n");
+	//printf("Function completed...Press any key to continue\n");
 	//getchar();
 	return 0;
 }
@@ -92,5 +121,13 @@ int IntToBinary(int k)
 	return (k % 2) + 10 * IntToBinary(k / 2);
 }
 
+
+void ShowVersion()
+{
+	printf("*************************************\n");
+	printf("ASCII App v%s | Created by %s\n", VERSION, CREATED_BY);
+	printf("*************************************\n");
+	printf("\n\n");
+}
 
 
