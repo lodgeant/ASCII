@@ -15,8 +15,8 @@
 int IntToBinary(int k);
 void ShowVersion();
 int GetColumnWidth();
-int GetSTartIndex();
-
+int GetStartIndex();
+int GetEndIndex(int);
 
 
 // ** MAIN **
@@ -44,10 +44,11 @@ int main()
 		// ** Get start and end values from user **
 		int startIndex = GetStartIndex();
 		if (startIndex == -1) break;
-		int endIndex = GetEndIndex();
+		int endIndex = GetEndIndex(startIndex);
 		if (endIndex == -1) break;
 
 
+		
 
 
 
@@ -157,7 +158,7 @@ int GetStartIndex()
 	return startIndex;
 }
 
-int GetEndIndex()
+int GetEndIndex(int startIndex)
 {
 	// ** Get end index from user **		
 	int endIndex = 0;
@@ -169,7 +170,14 @@ int GetEndIndex()
 			// ERROR NEEDS TO BE CAUGHT HERE...
 		}
 		if (endIndex == -1) break;
-		else if (endIndex >= MIN_INDEX && endIndex <= MAX_INDEX) break;
+		else if (endIndex < startIndex) // ** Check EndIndex is greater than StartIndex **
+		{
+			printf("End Index must be >= StartIndex\n\n");
+		}
+		else if (endIndex >= MIN_INDEX && endIndex <= MAX_INDEX)
+		{
+			break;
+		}
 		else if (endIndex < 0 || endIndex > 500)
 		{
 			printf("End Index must be between %d and %d\n\n", MIN_INDEX, MAX_INDEX);
